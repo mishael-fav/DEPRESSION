@@ -86,7 +86,7 @@ This analysis aims to identify key risk factors and target support efforts towar
     ### Relationship between Professional degree and depression level.
    ![degree](degree.png)
     ### Correlation Heatmap
-   ![correlation result](correlationresult.png)
+   ![correlation result](correlation%20result.png)
 
 6. **Machine Learning**
     - Import some necessary libraries for machine learning
@@ -130,6 +130,9 @@ This analysis aims to identify key risk factors and target support efforts towar
       print("Classification Report:\n", classification_report(y_test, y_pred))
       print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
        ```
+
+     ### Result of MAchine Learning Models
+     ![correlation result](correlation%20result.png)
 
 ---
 
