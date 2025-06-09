@@ -132,13 +132,13 @@ This analysis aims to identify key risk factors and target support efforts towar
        ```
 
      ### Result of MAchine Learning Models
-     ![correlation result](correlation%20result.png)
+     ![Machine-learning-Models](Machine-learning-Models.png)
 
 ---
 
 ## Key Insights
 
-✅ Majority of the respondents fall within the early 20s age group—indicating this cohort is particularly vulnerable.  
+✅ Majority of the respondents fall within the early 20s age group. Indicating this cohort is particularly vulnerable.  
 ✅ CGPA and academic stress show relationships with depression levels.  
 ✅ Gender and profession also contribute to differing depression risks.  
 ✅ Targeted mental health support is needed for **students** at risk.
