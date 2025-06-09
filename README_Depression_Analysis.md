@@ -27,10 +27,19 @@ This analysis aims to identify key risk factors and target support efforts towar
 
 - **Source:** [Kaggle - Student Depression Dataset](https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset)
 - **Attributes:**
+  - **id**
+  - **Gender**
   - **Age:** 18 - 59 years (mean ~26 years)
-  - **CGPA:** Max value 10, average 7.66
-  - Majority of respondents are **college/university students** or early professionals.
-
+  - **City**
+  - **Profession:** Majority of respondents are **college/university students** or early professionals.
+  - **Academic Pressure**
+   .
+   .
+   .
+  - **Financial Stress**
+  - **Mental Illness**
+  - **Depression**
+    
 ---
 
 ## Tools & Libraries Used
@@ -39,8 +48,8 @@ This analysis aims to identify key risk factors and target support efforts towar
 - **Pandas** - Data manipulation and analysis  
 - **NumPy** - Numerical computing  
 - **Matplotlib** - Data visualization  
-- **Seaborn** - Advanced visualization  
-- **GeoPandas** - Geospatial data handling  
+- **Seaborn** - Advanced visualization
+- **SkLearn** - Machine Learning
 
 ---
 
@@ -52,7 +61,6 @@ This analysis aims to identify key risk factors and target support efforts towar
     import numpy as np
     import matplotlib.pyplot as plt
     import seaborn as sns
-    import geopandas as gpd
     
     Depression_data = pd.read_csv('/content/drive/MyDrive/student_depression_dataset.csv')
     ```
@@ -73,14 +81,55 @@ This analysis aims to identify key risk factors and target support efforts towar
     - Prepare variables for visualization and modeling.
 
 4. **Visualizations**
-    - Age distribution of students.
-    - Relationship between CGPA and depression level.
-    - Impact of gender and profession on depression risk.
+    ### Gender distribution
+   ![gender](gender.png)
+    ### Relationship between Professional degree and depression level.
+   ![degree](degree.png)
+    ### Correlation Heatmap
+   ![correlation result](correlationresult.png)
 
-5. **Modeling & Insights**
-    - Perform correlation analysis.
-    - Highlight patterns/trends from the data.
-    - Recommend interventions based on findings.
+6. **Machine Learning**
+    - Import some necessary libraries for machine learning
+      - Display data structure:
+        ```python
+        from sklearn.model_selection import train_test_split
+        from sklearn.preprocessing import LabelEncoder, StandardScaler
+        from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+        from sklearn.linear_model import LogisticRegression
+        from sklearn.svm import SVC
+        from sklearn.neighbors import KNeighborsClassifier
+        from sklearn.metrics import accuracy_score
+        from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+        ```
+    - Prepare Dataset
+        ```python
+        # Select only numerical columns for X and drop the target column
+        X = D_data.drop(columns=['Depression', 'id'], errors='ignore')
+        X = X.select_dtypes(include=['int64', 'float64'])
+        
+        y = D_data['Depression']
+
+        # Split dataset into Train and test
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+        # Scale the dataset
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
+        ```
+    - Train the machine learning model
+        ```python
+        model = RandomForestClassifier(n_estimators=100, random_state=42)
+        model.fit(X_train, y_train)
+        ```
+    - Model evaluation
+       ```python
+       y_pred = model.predict(X_test)
+      print("Random Forest Classification Report:")
+      print("Accuracy:", accuracy_score(y_test, y_pred))
+      print("Classification Report:\n", classification_report(y_test, y_pred))
+      print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+       ```
 
 ---
 
